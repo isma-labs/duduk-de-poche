@@ -422,6 +422,81 @@ label.row{cursor:pointer}
 @keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
 @media (max-width:359px){.grid{gap:4px}.tile .n{font-size:16px}.tile .f{font-size:10px}.title{font-size:27px}.fname{font-size:46px}.player .big{font-size:54px}}
+.mode-seg{margin:2px 0 12px}
+.staff .loopband{fill:var(--tint)}
+.staff .phead{stroke:var(--accent);stroke-width:2.5;stroke-linecap:round}
+.staff-wrap.picking{box-shadow:0 0 0 2px var(--accent) inset}
+.big.count{color:var(--accent)}
+.fw-msg.good{color:var(--ok)} .fw-msg.warn{color:var(--warn)} .fw-msg.bad{color:var(--danger)}
+.passes{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:0}
+.passes:empty{display:none}
+.pass{font-size:13px;color:var(--muted);background:var(--fill);border-radius:12px;padding:3px 9px;font-variant-numeric:tabular-nums}
+.pass.last{color:var(--accent);background:var(--tint)}
+.scores3{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;margin-bottom:12px}
+.scores3 b{display:block;font:700 26px/1.1 var(--round);font-variant-numeric:tabular-nums}
+.scores3 div:first-child b{color:var(--accent)}
+.scores3 small{font-size:.55em;margin-left:1px}
+.scores3 span{font-size:12px;color:var(--muted)}
+
+/* ---------- v5 : habillage. Tons chauds de l'abricotier (le bois du duduk), cartes douces en relief léger,
+   titres en serif, boutons principaux en dégradé abricot. Mêmes classes, mêmes fonctions. */
+:root{
+  --bg:#f5f0ea; --card:#fffdfa; --ink:#1d1611; --muted:#6c6157; --line:#e4dace; --accent:#b4471b; --on-accent:#fff;
+  --fill:#efe7de; --track:#e4d9cd; --raised:#fffdfa; --tint:rgba(180,71,27,.10); --tile:#fffdfa; --tile-alt:#ebe2d7;
+  --tabgray:#9a8e83; --bar:rgba(250,246,241,.92);
+  --serif:"New York",ui-serif,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sh:0 1px 2px rgba(74,44,20,.06),0 8px 24px -12px rgba(74,44,20,.18);
+  --sh-btn:0 8px 18px -8px rgba(180,71,27,.65);
+  --grad:linear-gradient(180deg,#cb5d2a 0%,#ae4118 100%);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12100e; --card:#1d1a17; --ink:#f6efe7; --muted:#a69b90; --line:#36302a; --accent:#ff9a5c; --on-accent:#2a1204;
+    --fill:#2a2622; --track:#3b352f; --raised:#4b443d; --tint:rgba(255,154,92,.16); --tile:#24201c; --tile-alt:#171512;
+    --tabgray:#8f857b; --bar:rgba(24,21,18,.92);
+    --sh:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px -14px rgba(0,0,0,.8); --sh-btn:0 8px 18px -8px rgba(255,140,70,.45);
+    --grad:linear-gradient(180deg,#ffab73 0%,#f2864a 100%);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12100e; --card:#1d1a17; --ink:#f6efe7; --muted:#a69b90; --line:#36302a; --accent:#ff9a5c; --on-accent:#2a1204;
+  --fill:#2a2622; --track:#3b352f; --raised:#4b443d; --tint:rgba(255,154,92,.16); --tile:#24201c; --tile-alt:#171512;
+  --tabgray:#8f857b; --bar:rgba(24,21,18,.92);
+  --sh:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px -14px rgba(0,0,0,.8); --sh-btn:0 8px 18px -8px rgba(255,140,70,.45);
+  --grad:linear-gradient(180deg,#ffab73 0%,#f2864a 100%);
+}
+.title,.song-title,.page-title{font-family:var(--serif);font-weight:700;letter-spacing:-.005em}
+.title{font-size:32px}
+.song-title{font-size:27px}
+.section-h{font-size:12px;font-weight:600;letter-spacing:.09em;color:var(--muted)}
+.card,.list{border-radius:16px;box-shadow:var(--sh)}
+.player{border-radius:22px;box-shadow:var(--sh);padding:18px 16px 16px}
+.staff-wrap,.fcard,.mini{border-radius:18px;box-shadow:var(--sh)}
+.tile{border-radius:14px;box-shadow:var(--sh)}
+.tile.alt{box-shadow:none}
+.tile[aria-pressed="true"],.chip[aria-checked="true"],.btn:not(.tint):not(.gray),.round.main,.nextbtn:not(:disabled){background:var(--grad);box-shadow:var(--sh-btn)}
+.nextbtn:disabled{background:var(--fill);color:var(--muted);opacity:1}
+.btn.tint{background:var(--tint);color:var(--accent)}
+.round{background:var(--fill)}
+.round:active,.nextbtn:active,.btn:active,.tile:active{transform:scale(.97)}
+.round,.nextbtn,.btn,.chip{transition:transform .08s ease,box-shadow .2s ease}
+.seg{border-radius:11px;padding:3px}
+.seg button{border-radius:8px}
+.seg button[aria-checked="true"]{box-shadow:0 1px 2px rgba(74,44,20,.10),0 2px 8px -2px rgba(74,44,20,.14);color:var(--ink)}
+.mode-seg{background:var(--fill)}
+.mode-seg button{height:38px;font-size:15px}
+.mode-seg button[aria-checked="true"]{color:var(--accent)}
+.icon-btn,.key-btn{background:var(--card);box-shadow:var(--sh)}
+.tab[aria-selected="true"] svg{background:var(--tint);border-radius:10px;box-shadow:0 0 0 4px var(--tint)}
+.tab[aria-selected="true"]{font-weight:600}
+.player .step{letter-spacing:.08em;font-weight:600}
+.player .big{letter-spacing:-.01em}
+.staff .sl{stroke:color-mix(in srgb,var(--ink) 30%,transparent)}
+.lead{font-size:15.5px}
+.row{min-height:50px}
+.sheet{border-radius:20px 20px 0 0}
+.dialog{border-radius:18px}
+.toast{border-radius:14px}
 </style>
 </head>
 <body>
@@ -729,7 +804,7 @@ const DEFAULTS = {key:'A', ref:440, notation:'fr', written:true, reverb:true,
   timbre:'doux', damVol:0.8, fadeIn:1, fadeOut:1, notes:{},
   keys:{toggle:'ArrowLeft', next:'ArrowRight', prev:'ArrowDown'}, lock:1,
   bpm:80, meter:'4/4|0', metroSound:'clic', metroVol:0.8, sel:57, recs:[], names:'duduk', soft:0,
-  drillDur:8, drillRange:'oct', drillRef:true, drillMic:false, scoreSrc:'duduk', scoreMode:'tempo', scoreBpm:72, practice:{}, today:{d:'', done:[]}, u:0, recDel:[]};
+  drillDur:8, drillRange:'oct', drillRef:true, drillMic:false, scoreSrc:'duduk', scoreMode:'tempo', scoreBpm:72, scoreView:'wait', rhySpeed:1, rhyClick:true, micLat:-1, practice:{}, today:{d:'', done:[]}, u:0, recDel:[]};
 const LS_P = 'duduk-de-poche/v2/prefs', LS_S = 'duduk-de-poche/v2/songs', LS_V1 = 'duduk-de-poche/v1';
 function readLS(k){ try { const r = localStorage.getItem(k); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function writeLS(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -751,6 +826,9 @@ function cleanPrefs(o){
   if (p.scoreSrc !== 'piano') p.scoreSrc = 'duduk';
   if (p.scoreMode !== 'free') p.scoreMode = 'tempo';
   p.scoreBpm = clamp(Math.round(p.scoreBpm) || 72, 30, 220);
+  if (p.scoreView !== 'play') p.scoreView = 'wait';
+  if (![0.5, 0.75, 1].includes(p.rhySpeed)) p.rhySpeed = 1;
+  p.micLat = p.micLat >= 0 ? clamp(Math.round(p.micLat), 0, 500) : -1;
   const pr = {}, src = o && o.practice && typeof o.practice === 'object' && !Array.isArray(o.practice) ? o.practice : {};
   Object.keys(src).filter(d => /^\d{4}-\d\d-\d\d$/.test(d) && typeof src[d] === 'number' && src[d] > 0).sort().slice(-120).forEach(d => { pr[d] = Math.min(86400, src[d]); });
   p.practice = pr;
@@ -1950,6 +2028,7 @@ function renderTuner(){
 function tunerUpdate(){
   const c = Tuner.cur;
   if (Follow.on) Follow.tick();
+  if (Rhy.on || Rhy.cal) Rhy.tick();
   if (ui.tab === 'guide' && ui.guide === 'tuner') {
     const note = $('#tnNote'), pt = $('#tnPt');
     if (note && pt) {
@@ -2520,18 +2599,18 @@ Règles : une entrée dans "parts" par portée ou voix ; chaque mesure est une l
 function openScore(id){
   const s = scoreById(id); if (!s) return;
   if (Player.on) Player.stop();
-  ui.scoreId = id; ui.scoreEdit = false; ui.mtab = 'scores'; Follow.arm(s);
+  ui.scoreId = id; ui.scoreEdit = false; ui.mtab = 'scores'; Follow.arm(s); Rhy.arm(s);
   if (ui.tab !== 'morceaux') go('morceaux'); else { renderNav(); renderSongs(); }
   $('#main').scrollTop = 0;
 }
 function closeScore(){
   if (ui.scoreEdit) finishScoreEdit();
-  Follow.stop(); ui.scoreId = null; ui.scoreEdit = false;
+  Follow.stop(); Rhy.stop(true); ui.scoreId = null; ui.scoreEdit = false;
   renderNav(); renderSongs(); $('#main').scrollTop = 0;
 }
 function startScoreEdit(){
   let s = scoreById(ui.scoreId); if (!s) return;
-  Follow.stop();
+  Follow.stop(); Rhy.stop(true);
   if (s.example) { s = {id:newId(), name:'Ma première partition', notes:s.notes.map(n => ({w:n.w, d:n.d})), u:Date.now()}; SCORES.push(s); Store.save('songs'); ui.scoreId = s.id; }
   ui.scoreEdit = true; renderNav(); renderSongs();
 }
@@ -2564,9 +2643,11 @@ function renderScore(){
   if (ui.scoreEdit && !s.example) { v.innerHTML = scoreEditHTML(s); return; }
   const F = Follow, n = s.notes.length;
   if (!n) { v.innerHTML = `<h2 class="song-title">${esc(s.name || 'Sans titre')}</h2><div class="card empty"><p>${fr('Pas encore de notes dans cette partition.')}</p><button class="btn small" data-sact="addfirst">Ajouter des notes</button></div>`; return; }
+  if (P.scoreView === 'play') { Rhy.arm(s); renderRhy(v, s); return; }
   const idx = Math.min(F.idx, n - 1), cur = s.notes[idx], hasD = s.notes.some(x => x.d != null), tp = tempoOn(s);
   const marks = F.rhythmMarks();
   v.innerHTML = `<h2 class="song-title">${esc(s.name || 'Sans titre')}</h2>
+    ${modeSegHTML()}
     <div class="staff-wrap" id="staffWrap">${staffSVG(s, F.res, F.done ? -1 : idx, marks)}</div>
     <div class="player follow">
       <div class="step" id="fwStep">${F.done ? 'Terminé' : `Note ${idx + 1} sur ${n}`}${F.on ? ' · j’écoute' : ''}</div>
@@ -2583,7 +2664,7 @@ function renderScore(){
     </div>
     ${F.done ? followSummaryHTML() : ''}
     <div class="section"><div class="list">
-      <div class="row"><span class="grow">Suivi</span><div class="seg fit" role="radiogroup" aria-label="Mode de suivi"><button role="radio" data-smode="tempo" aria-checked="${P.scoreMode === 'tempo'}"${hasD ? '' : ' disabled'}>Avec le rythme</button><button role="radio" data-smode="free" aria-checked="${P.scoreMode !== 'tempo' || !hasD}">Notes seules</button></div></div>
+      <div class="row"><span class="grow">Durées</span><div class="seg fit" role="radiogroup" aria-label="Prise en compte des durées"><button role="radio" data-smode="tempo" aria-checked="${P.scoreMode === 'tempo'}"${hasD ? '' : ' disabled'}>Avec le rythme</button><button role="radio" data-smode="free" aria-checked="${P.scoreMode !== 'tempo' || !hasD}">Notes seules</button></div></div>
       ${tp ? `<div class="row"><span class="grow">Tempo</span><span class="val">♩${NB}=${NB}${P.scoreBpm}</span><div class="stepper"><button data-sact="bpmDown" aria-label="Ralentir">−</button><i></i><button data-sact="bpmUp" aria-label="Accélérer">+</button></div></div>` : ''}
     </div>
     <p class="section-f">${fr(tp
@@ -2772,6 +2853,306 @@ const Follow = {
     }
   }
 };
+// ---------- Mode « En rythme » : la partition défile seule au tempo choisi, avec décompte et clics.
+// Chaque note est jugée sur la justesse, l'attaque (à l'heure, tôt, tard) et la tenue. On ne s'arrête pas si tu décroches.
+const Rhy = {
+  on:false, score:null, timer:0, raf:0, res:[], marks:{}, log:[], passes:[], loop:null, from:0, pick:0, cal:null, done:false, msg:'', msgCls:'', ci:-1, env:[], dip:false, dipMax:0, elapsed:0,
+  arm(s){ if (this.score && this.score.id === s.id) { this.score = s; return; } this.stop(true); this.score = s; this.loop = null; this.from = 0; this.pick = 0; this.clear(); },
+  clear(){ Object.assign(this, {res:[], marks:{}, log:[], passes:[], lastRes:null, lastMarks:null, done:false, msg:'', msgCls:'', ci:-1, elapsed:0}); },
+  bpm(){ return Math.max(20, Math.round(P.scoreBpm * P.rhySpeed)); },
+  // Décalage entre le son réellement joué et sa lecture au micro : mesuré par le calibrage, sinon estimé.
+  lat(){ if (P.micLat >= 0) return P.micLat / 1000; const c = AE.ctx; return (c ? (c.outputLatency || 0) + (c.baseLatency || 0) : 0.02) + 0.05; },
+  layout(s){ let pos = 0; const on = [], du = []; for (const n of s.notes) { const d = n.d != null ? n.d : 1; on.push(pos); du.push(d); pos += d; } return {on, du}; },
+  bars(s, lay){
+    const starts = [0]; s.notes.forEach((n, i) => { if (n.bar && i) starts.push(lay.on[i]); });
+    const cnt = {}; for (let k = 1; k < starts.length; k++) { const l = Math.round(starts[k] - starts[k - 1]); if (l >= 2 && l <= 7) cnt[l] = (cnt[l] || 0) + 1; }
+    let beats = 4, best = 0; for (const l in cnt) if (cnt[l] > best) { best = cnt[l]; beats = +l; }
+    return {beats, starts};
+  },
+  noteOn(i, p){ return this.T0 + (p * this.Lb + this.lay.on[i] - this.lay.on[this.a]) * this.beat; },
+  async start(){
+    const s = this.score; if (!s || !s.notes.length) return;
+    if (Follow.on) Follow.stop(true);
+    if (Drill.on) Drill.stop();
+    if (this.cal) return;
+    if (Tuner.on && Tuner.owner !== 'score') Tuner.stop();
+    const ok = await Tuner.start('score');
+    if (!ok) { renderScore(); return; }
+    const n = s.notes.length, lay = this.lay = this.layout(s), bb = this.bb = this.bars(s, lay);
+    this.a = this.loop ? this.loop.a : clamp(this.from, 0, n - 1); this.b = this.loop ? this.loop.b : n - 1;
+    this.Lb = lay.on[this.b] + lay.du[this.b] - lay.on[this.a];
+    this.beat = 60 / this.bpm(); this.cin = bb.beats;
+    const ctx = AE.ctx; this.tc = ctx.currentTime + 0.3; this.T0 = this.tc + this.cin * this.beat;
+    this.clear(); this.k = 0; this.jp = 0; this.ji = this.a; this.env = []; this.dip = false;
+    this.on = true; this.t0w = Date.now(); this.ci = -1;
+    clearInterval(this.timer); this.timer = setInterval(() => this.schedule(), 25); this.schedule();
+    cancelAnimationFrame(this.raf); this.raf = requestAnimationFrame(() => this.frame());
+    syncWake(); renderScore();
+  },
+  stop(silent){
+    const was = this.on; this.on = false; clearInterval(this.timer); cancelAnimationFrame(this.raf);
+    if (was) this.elapsed = Date.now() - this.t0w;
+    // Arrêt en cours de boucle : le bilan porte sur le dernier passage complet.
+    if (was && this.passes.length && this.lastRes) { this.res = this.lastRes.slice(); this.marks = Object.assign({}, this.lastMarks); }
+    if (Tuner.owner === 'score' && !Follow.on && !this.cal) Tuner.stop();
+    if (was) syncWake();
+    if (was && !silent && ui.scoreId) renderScore();
+  },
+  clickAt(k){
+    if (k < this.cin) return {t:this.tc + k * this.beat, acc:k === 0 ? 1 : 0, cnt:this.cin - k};
+    const per = Math.max(1, Math.ceil(this.Lb - 1e-6)), kk = k - this.cin, p = Math.floor(kk / per), j = kk % per;
+    if (!this.loop && p > 0) return null;
+    const pos = this.lay.on[this.a] + j;
+    return {t:this.T0 + (p * this.Lb + j) * this.beat, acc:this.bb.starts.some(x => Math.abs(x - pos) < 1e-3) ? 1 : 0};
+  },
+  schedule(){
+    if (!this.on) return;
+    const ctx = AE.ctx, until = ctx.currentTime + 0.15;
+    for (;;) {
+      const c = this.clickAt(this.k); if (!c || c.t > until) break;
+      if (P.rhyClick || this.k < this.cin) AE.click(Math.max(c.t, ctx.currentTime + 0.005), c.acc);
+      this.k++;
+    }
+  },
+  // Position dans la partition à l'instant t (horloge audio) : passage, note, fraction de la note.
+  where(t){
+    if (t < this.T0) return {count:Math.ceil((this.T0 - t) / this.beat)};
+    const tot = this.Lb * this.beat, p = Math.floor((t - this.T0) / tot);
+    if (!this.loop && p > 0) return {end:true};
+    const pos = this.lay.on[this.a] + (t - this.T0 - p * tot) / this.beat;
+    let i = this.a; while (i < this.b && this.lay.on[i + 1] <= pos) i++;
+    return {p, i, fr:clamp((pos - this.lay.on[i]) / this.lay.du[i], 0, 1)};
+  },
+  frame(){
+    if (!this.on) return;
+    const ctx = AE.ctx, t = ctx.currentTime - (ctx.outputLatency || 0), w = this.where(t);
+    const head = $('#rhHead'), wrap = $('#staffWrap');
+    if (w.count) { this.setBig(String(Math.min(w.count, this.cin)), 'count'); }
+    else if (!w.end) {
+      if (w.i !== this.ci) { this.ci = w.i; this.drawStaff(); this.setBig(null); }
+      const x = 52 + w.i * 34 + w.fr * 34 - 17;
+      if (head) { head.setAttribute('x1', x); head.setAttribute('x2', x); }
+      if (wrap) wrap.scrollLeft = Math.max(0, x - wrap.clientWidth * 0.35);
+    }
+    this.raf = requestAnimationFrame(() => this.frame());
+  },
+  setBig(txt, cls){
+    const big = $('#rhBig'), sub = $('#rhSub'); if (!big) return;
+    const s = this.score;
+    if (txt != null) { big.textContent = txt; big.className = 'big ' + (cls || ''); if (sub) sub.textContent = 'Prépare-toi…'; return; }
+    const n = s.notes[this.ci]; big.className = 'big'; big.innerHTML = noteHTML(toConcert(n.w));
+    if (sub) sub.textContent = `${durName(this.lay.du[this.ci])} · note ${this.ci + 1} sur ${s.notes.length}`;
+  },
+  tick(){
+    const f = Tuner.raw || 0, ctx = AE.ctx;
+    if (this.cal) { this.cal.log.push({t:ctx.currentTime, f}); return; }
+    if (!this.on) return;
+    const tr = ctx.currentTime - this.lat();
+    const fr = Tuner.frames && Tuner.frames.length ? Tuner.frames : [Tuner.rmsTail || 0];
+    const envMax = Math.max(...this.env, 0); let atk = false;
+    for (const v of fr) {
+      if (!this.dip && envMax && v < 0.35 * envMax) { this.dip = true; this.dipMax = envMax; }
+      else if (this.dip && v > 0.6 * this.dipMax) { this.dip = false; atk = true; }
+    }
+    this.env.push(Math.max(...fr)); if (this.env.length > 8) this.env.shift();
+    this.log.push({t:tr, f, atk});
+    while (this.on && this.noteOn(this.ji, this.jp) + this.lay.du[this.ji] * this.beat + 0.3 < tr) this.judgeNext();
+    if (this.log.length > 400) this.log.splice(0, this.log.length - 400);
+    // Aiguille de justesse en direct par rapport à la note qui défile.
+    const w = this.where(tr), pt = $('#rhPt');
+    if (pt) {
+      if (f && w.i != null) { const dev = 1200 * Math.log2(f / mtof(toConcert(this.score.notes[w.i].w))); if (Math.abs(dev) <= 60) { pt.hidden = false; pt.style.left = `${50 + clamp(dev, -50, 50)}%`; pt.setAttribute('class', 'pt ' + centCls(dev)); } else pt.hidden = true; }
+      else pt.hidden = true;
+    }
+  },
+  judgeNext(){
+    const i = this.ji, p = this.jp, r = this.judge(i, p);
+    this.res[i] = r; this.marks[i] = r.mark || '';
+    this.msg = r.say; this.msgCls = r.cls;
+    const m = $('#rhMsg'); if (m) { m.textContent = r.say; m.className = 'fw-msg ' + r.cls; }
+    this.drawStaff();
+    if (i < this.b) { this.ji++; return; }
+    this.passes.push(this.passStats(p)); this.lastRes = this.res.slice(); this.lastMarks = Object.assign({}, this.marks);
+    if (this.loop) { this.jp++; this.ji = this.a; const ps = $('#rhPass'); if (ps) ps.innerHTML = this.passHTML(); }
+    else this.finish();
+  },
+  judge(i, p){
+    const s = this.score, on = this.noteOn(i, p), d = this.lay.du[i] * this.beat, off = on + d;
+    const tgt = mtof(toConcert(s.notes[i].w)), cents = f => 1200 * Math.log2(f / tgt), near = r => r && r.f && Math.abs(cents(r.f)) <= 60;
+    const prevI = i > this.a ? i - 1 : this.loop && p > 0 ? this.b : -1, prevSame = prevI >= 0 && s.notes[prevI].w === s.notes[i].w;
+    const L = this.log, tol = clamp(0.2 * this.beat, 0.09, 0.16);
+    // On cherche l'attaque entre le milieu de la note précédente (0,3 s au plus avant) et la fin de la note.
+    const prevOn = prevI >= 0 ? (prevI === this.b && i === this.a ? this.noteOn(prevI, p - 1) : this.noteOn(prevI, p)) : on - 0.6;
+    const lo = on - Math.min(0.3, 0.5 * (on - prevOn));
+    let onset = null, k0 = L.findIndex(r => r.t >= lo);
+    if (k0 >= 0) for (let k = k0; k < L.length && L[k].t < off - 0.05; k++) {
+      const r = L[k]; if (!near(r)) continue;
+      const pr = L[k - 1];
+      if (r.atk || !near(pr) || r.t - pr.t > 0.15) { onset = r.t; break; }
+    }
+    const from = on + Math.min(0.08, d * 0.25);
+    const pitched = L.filter(r => r.t >= from && r.t <= off && r.f), good = pitched.filter(near);
+    const cover = Math.min(1, good.length * 0.05 / Math.max(0.05, off - from));
+    const name = scoreLabel(s.notes[i].w);
+    if (!pitched.length || (!good.length && pitched.length * 0.05 < 0.3 * (off - from))) return {skip:true, miss:true, mark:'', say:`${name} : pas entendue`, cls:'bad'};
+    const dev = good.length >= Math.max(1, pitched.length * 0.4) ? median(good.map(r => cents(r.f))) : median(pitched.map(r => cents(r.f)));
+    const r = {dev, cover, hold:cover >= 0.55 ? 'ok' : 'court'};
+    if (!good.length) r.timing = 'fausse';
+    else if (onset == null) r.timing = prevSame ? 'liée' : 'tôt';
+    else { r.err = onset - on; r.timing = Math.abs(r.err) <= tol ? 'ok' : r.err < 0 ? 'tôt' : 'tard'; }
+    r.mark = r.timing === 'ok' ? (r.hold === 'court' ? 'court' : '') : r.timing === 'fausse' ? '' : r.timing;
+    const pitchTxt = Math.abs(dev) <= 10 ? 'juste' : Math.abs(dev) <= 60 ? `${ctTxt(dev)}${NB}cents` : 'fausse note';
+    const timeTxt = {ok:r.hold === 'court' ? 'à l’heure mais trop courte' : 'à l’heure', 'tôt':'un peu tôt', tard:'en retard', 'liée':'pas rejouée (coup de langue ?)', fausse:''}[r.timing];
+    r.say = `${name} : ${pitchTxt}${timeTxt ? ', ' + timeTxt : ''}`;
+    r.cls = Math.abs(dev) > 25 || r.timing !== 'ok' ? (Math.abs(dev) > 60 ? 'bad' : 'warn') : 'good';
+    return r;
+  },
+  passStats(p){
+    const R = this.res.slice(this.a, this.b + 1), n = R.length || 1;
+    const J = R.filter(r => r && !r.miss && Math.abs(r.dev) <= 10).length, Jp = R.filter(r => r && !r.miss && Math.abs(r.dev) <= 25).length;
+    const T = R.filter(r => r && r.timing === 'ok').length, H = R.filter(r => r && r.hold === 'ok').length, M = R.filter(r => r && r.miss).length;
+    return {p:p + 1, n, J, Jp, T, H, M, score:Math.round((Jp / n + T / n + H / n) / 3 * 100)};
+  },
+  passHTML(){
+    const L = this.passes.slice(-4);
+    return L.length ? L.map(x => `<span class="pass${x === this.passes[this.passes.length - 1] ? ' last' : ''}">Passage ${x.p} · <b>${x.score}${NB}%</b></span>`).join('') : '';
+  },
+  finish(){
+    this.done = true; this.on = false; clearInterval(this.timer); cancelAnimationFrame(this.raf); this.elapsed = Date.now() - this.t0w;
+    if (Tuner.owner === 'score') setTimeout(() => { if (!this.on && !Follow.on && Tuner.owner === 'score') Tuner.stop(); }, 600);
+    syncWake(); if (!this.score.example) markDone('morceau');
+    renderScore();
+    const sum = $('#rhSum'); if (sum) setTimeout(() => sum.scrollIntoView({behavior:reduced ? 'auto' : 'smooth', block:'center'}), 80);
+  },
+  drawStaff(){
+    const w = $('#staffWrap'), s = this.score; if (!w || !s || !(ui.tab === 'morceaux' && ui.scoreId)) return;
+    const sl = w.scrollLeft; w.innerHTML = rhyStaff(s); w.scrollLeft = sl;
+  },
+  // Calibrage : 8 clics, tu joues une note brève sur chacun ; on mesure l'écart moyen entre le clic et la note entendue.
+  async calibrate(){
+    if (this.on) this.stop(true);
+    if (Follow.on) Follow.stop(true);
+    const ok = await Tuner.start('score'); if (!ok) { renderScore(); return; }
+    const ctx = AE.ctx, beat = 0.8, n = 8, t0 = ctx.currentTime + 1;
+    this.cal = {clicks:[], log:[]};
+    for (let k = 0; k < n; k++) { const t = t0 + k * beat; AE.click(t, k % 4 === 0 ? 1 : 0); this.cal.clicks.push(t); }
+    renderScore();
+    this.calT = setTimeout(() => this.calEnd(), (1 + n * beat + 0.6) * 1000);
+  },
+  calEnd(){
+    const C = this.cal; if (!C) return;
+    const ok = r => r && r.f > 120 && r.f < 1000, offs = [];
+    for (const c of C.clicks) {
+      const L = C.log;
+      for (let k = 1; k < L.length - 2; k++) {
+        if (L[k].t < c - 0.2) continue; if (L[k].t > c + 0.5) break;
+        if (ok(L[k]) && ok(L[k + 1]) && ok(L[k + 2]) && !ok(L[k - 1])) { offs.push(L[k].t - c); break; }
+      }
+    }
+    this.cal = null;
+    if (offs.length >= 4) { P.micLat = Math.round(clamp(median(offs), 0, 0.5) * 1000); Store.save('prefs'); toast(`Latence mesurée : ${P.micLat}${NB}ms`); }
+    else toast('Pas assez de notes entendues. Recommence : une note brève sur chaque clic.');
+    if (Tuner.owner === 'score' && !Follow.on && !this.on) Tuner.stop();
+    renderScore();
+  }
+};
+function rhyStaff(s){
+  const R = Rhy, cur = R.on && R.ci >= 0 ? R.ci : R.done ? -1 : R.from;
+  let svg = staffSVG(s, R.res, cur, R.marks);
+  const H = R.loop || R.pick === 2 ? (R.loop || {a:R.pickA, b:R.pickA}) : null;
+  if (H) { const x1 = 52 + H.a * 34 - 17, x2 = 52 + H.b * 34 + 17; svg = svg.replace(/(<svg[^>]*>)/, `$1<rect class="loopband" x="${x1}" y="2" width="${x2 - x1}" height="124" rx="8"/>`); }
+  if (R.on) svg = svg.replace('</svg>', `<line class="phead" id="rhHead" x1="0" x2="0" y1="4" y2="124"/></svg>`);
+  return svg;
+}
+function rhySummaryHTML(){
+  const R = Rhy, s = R.score, from = R.loop ? R.loop.a : R.from, to = R.loop ? R.loop.b : s.notes.length - 1;
+  const items = []; for (let i = from; i <= to; i++) if (R.res[i]) items.push({i, r:R.res[i]});
+  if (!items.length) return '';
+  const n = items.length, st = R.passStats(0), lst = L => L.slice(0, 5).map(x => `${scoreLabel(s.notes[x.i].w)} (note ${x.i + 1})`).join(', ') + (L.length > 5 ? '…' : '');
+  const late = items.filter(x => x.r.timing === 'tard'), early = items.filter(x => x.r.timing === 'tôt'), tied = items.filter(x => x.r.timing === 'liée'), short = items.filter(x => x.r.hold === 'court' && !x.r.miss), miss = items.filter(x => x.r.miss), off = items.filter(x => !x.r.miss && Math.abs(x.r.dev) > 25);
+  const errs = items.filter(x => x.r.err != null).map(x => x.r.err), drift = errs.length >= 4 ? median(errs) : 0;
+  const sec = Math.round(R.elapsed / 1000);
+  return `<div class="section" id="rhSum"><div class="section-h">Bilan${R.passes.length > 1 ? ` · ${R.passes.length} passages` : ''}</div><div class="card">
+    <div class="scores3"><div><b>${st.score}<small>%</small></b><span>précision</span></div><div><b>${Math.round(st.Jp / n * 100)}<small>%</small></b><span>justesse</span></div><div><b>${Math.round(st.T / n * 100)}<small>%</small></b><span>timing</span></div><div><b>${Math.round(st.H / n * 100)}<small>%</small></b><span>tenue</span></div></div>
+    <ul class="sum-list">
+      <li>${st.J} note${st.J > 1 ? 's' : ''} juste${st.J > 1 ? 's' : ''} à 10${NB}cents, ${st.Jp - st.J} à peu près, ${n - st.Jp - st.M} fausse${n - st.Jp - st.M > 1 ? 's' : ''}${st.M ? `, ${st.M} pas entendue${st.M > 1 ? 's' : ''}` : ''}, sur ${n}.</li>
+      ${Math.abs(drift) > 0.05 ? `<li>${esc(fr(`Dans l’ensemble tu attaques ${drift > 0 ? 'en retard' : 'en avance'} (${Math.round(Math.abs(drift) * 1000)}${NB}ms). ${drift > 0 ? 'Anticipe le souffle d’un rien.' : 'Attends le clic.'}`))}</li>` : ''}
+      ${late.length ? `<li>${esc(fr(`En retard : ${lst(late)}`))}</li>` : ''}
+      ${early.length ? `<li>${esc(fr(`Trop tôt : ${lst(early)}`))}</li>` : ''}
+      ${tied.length ? `<li>${esc(fr(`Pas rejouées (coup de langue manquant) : ${lst(tied)}`))}</li>` : ''}
+      ${short.length ? `<li>${esc(fr(`Pas assez tenues : ${lst(short)}`))}</li>` : ''}
+      ${off.length ? `<li>${esc(fr(`Justesse à reprendre : ${lst(off)}`))}</li>` : ''}
+      ${miss.length ? `<li>${esc(fr(`Pas entendues : ${lst(miss)}`))}</li>` : ''}
+      <li>Tempo ♩${NB}=${NB}${R.bpm()}${P.rhySpeed < 1 ? ` (${Math.round(P.rhySpeed * 100)}${NB}% de ${P.scoreBpm})` : ''} · ${sec >= 60 ? `${Math.floor(sec / 60)}${NB}min${NB}${String(sec % 60).padStart(2, '0')}` : `${sec}${NB}s`}</li>
+    </ul>
+    ${R.passes.length > 1 ? `<div class="passes">${R.passes.slice(-8).map(x => `<span class="pass">${x.p} · <b>${x.score}${NB}%</b></span>`).join('')}</div>` : ''}
+  </div></div>`;
+}
+function renderRhy(v, s){
+  const R = Rhy, n = s.notes.length, hasD = s.notes.some(x => x.d != null);
+  const lat = P.micLat >= 0 ? `${P.micLat}${NB}ms` : 'auto';
+  const loopTxt = R.pick === 1 ? 'Touche la 1re note' : R.pick === 2 ? 'Touche la dernière note' : R.loop ? `Notes ${R.loop.a + 1} à ${R.loop.b + 1}` : 'Toute la partition';
+  const startTxt = R.loop ? `le passage (notes ${R.loop.a + 1} à ${R.loop.b + 1})` : R.from ? `la note ${R.from + 1}` : 'le début';
+  v.innerHTML = `<h2 class="song-title">${esc(s.name || 'Sans titre')}</h2>
+    ${modeSegHTML()}
+    <div class="staff-wrap${R.pick ? ' picking' : ''}" id="staffWrap">${rhyStaff(s)}</div>
+    <div class="player follow rhy">
+      ${R.cal ? `<div class="step">Calibrage</div><div class="big count">♪</div><div class="fw-msg">${esc(fr('Joue une note brève sur chacun des 8 clics, n’importe laquelle. L’app mesure le décalage de ton micro.'))}</div>`
+      : `<div class="step" id="rhStep">${R.on ? (R.loop ? 'En boucle' : 'En rythme') + ` · tempo ${R.bpm()}` : R.done ? 'Terminé' : `Départ : ${esc(startTxt)}`}</div>
+      <div class="big${R.on ? ' count' : ''}" id="rhBig">${R.done ? '✓' : R.on ? '…' : noteHTML(toConcert(s.notes[R.loop ? R.loop.a : R.from].w))}</div>
+      <div class="fw-dur" id="rhSub">${R.on ? 'Prépare-toi…' : R.done ? '' : esc(fr(`Un décompte de ${R.bars(s, R.layout(s)).beats} clics, puis la partition défile.`))}</div>
+      <span class="cbar" aria-hidden="true"${R.on ? '' : ' hidden'}><i class="zone"></i><i class="mid"></i><i class="pt" id="rhPt" hidden></i></span>
+      <div class="fw-msg ${R.msgCls}" id="rhMsg" aria-live="polite">${R.on ? esc(R.msg) : ''}</div>
+      <div class="passes" id="rhPass">${R.on ? R.passHTML() : ''}</div>
+      <div class="controls">
+        <button class="round" data-ract="restart" aria-label="Revenir au début">${ICON.prev}</button>
+        <button class="round main" data-ract="toggle" aria-label="${R.on ? 'Arrêter' : 'Jouer en rythme'}">${R.on ? ICON.stop : ICON.play}</button>
+        <button class="nextbtn" data-ract="loop">${R.loop ? 'Sans boucle' : 'Boucle'}</button>
+      </div>`}
+      ${Tuner.err && !R.on ? `<p class="tn-err" style="font-size:14px;color:var(--danger)">${esc(fr(Tuner.err))}</p>` : ''}
+    </div>
+    ${R.done || (!R.on && R.res.length) ? rhySummaryHTML() : ''}
+    <div class="section"><div class="list">
+      <div class="row"><span class="grow">Tempo</span><span class="val">♩${NB}=${NB}${P.scoreBpm}</span><div class="stepper"><button data-sact="bpmDown" aria-label="Ralentir">−</button><i></i><button data-sact="bpmUp" aria-label="Accélérer">+</button></div></div>
+      <div class="row"><span class="grow">Vitesse</span><div class="seg fit" role="radiogroup" aria-label="Vitesse">${[0.5, 0.75, 1].map(x => `<button role="radio" data-rspeed="${x}" aria-checked="${P.rhySpeed === x}">${Math.round(x * 100)}${NB}%</button>`).join('')}</div></div>
+      <div class="row"><span class="grow">Passage</span><span class="val">${esc(loopTxt)}</span>${R.loop || R.pick ? `<button class="text-btn" data-ract="loopClear">Effacer</button>` : `<button class="text-btn" data-ract="loopPick">Choisir</button>`}</div>
+      <div class="row"><span class="grow">Clics pendant le morceau</span><button class="switch" role="switch" data-ract="click" aria-checked="${P.rhyClick}" aria-label="Clics pendant le morceau"></button></div>
+      <div class="row"><span class="grow">Latence du micro</span><span class="val">${lat}</span><button class="text-btn" data-ract="calib"${R.on ? ' disabled' : ''}>Calibrer</button></div>
+    </div>
+    <p class="section-f">${fr(`En rythme : après le décompte, le curseur avance seul ; joue chaque note au moment où il l’atteint et tiens-la jusqu’à la suivante. Chaque note est jugée sur la justesse (couleur), l’attaque (« tôt », « tard », « liée » si une note répétée n’est pas rejouée) et la tenue. Le morceau continue même si tu décroches. ${hasD ? '' : 'Cette partition n’a pas de durées : chaque note compte pour un temps. '}Choisis un passage pour le jouer en boucle, ralentis à 50 ou 75${NB}%, et calibre une fois la latence avec ton micro ou tes écouteurs. Touche une note pour partir de là.`)}</p>
+    </div>`;
+  const wrap = $('#staffWrap'), i0 = R.loop ? R.loop.a : R.from;
+  if (wrap && !R.on) wrap.scrollLeft = Math.max(0, 52 + i0 * 34 - wrap.clientWidth * 0.35);
+}
+function modeSegHTML(){
+  return `<div class="seg mode-seg" role="radiogroup" aria-label="Mode de jeu"><button role="radio" data-sview="wait" aria-checked="${P.scoreView !== 'play'}">Attente</button><button role="radio" data-sview="play" aria-checked="${P.scoreView === 'play'}">En rythme</button></div>`;
+}
+function rhyClick(e){
+  const sv = e.target.closest('[data-sview]');
+  if (sv) { const v = sv.dataset.sview; if (v !== P.scoreView) { Follow.stop(true); Rhy.stop(true); P.scoreView = v; Store.save('prefs'); renderScore(); } return true; }
+  if (P.scoreView !== 'play') return false;
+  const sp = e.target.closest('[data-rspeed]'); if (sp) { if (!Rhy.on) { P.rhySpeed = +sp.dataset.rspeed; Store.save('prefs'); renderScore(); } else toast('Arrête la lecture pour changer la vitesse.'); return true; }
+  const si = e.target.closest('[data-si]');
+  if (si && ui.scoreId && !ui.scoreEdit) {
+    const i = +si.dataset.si, R = Rhy;
+    if (R.on) return true;
+    if (R.pick === 1) { R.pickA = i; R.pick = 2; }
+    else if (R.pick === 2) { R.loop = {a:Math.min(R.pickA, i), b:Math.max(R.pickA, i)}; R.pick = 0; R.clear(); }
+    else { R.from = i; R.loop = null; R.clear(); }
+    renderScore(); return true;
+  }
+  const b = e.target.closest('[data-ract]'); if (!b) return false;
+  const a = b.dataset.ract, R = Rhy;
+  if (a === 'toggle') { if (R.on) R.stop(); else R.start(); }
+  else if (a === 'restart') { R.stop(true); R.from = 0; R.clear(); renderScore(); }
+  else if (a === 'loop') { if (R.loop) { R.loop = null; R.clear(); renderScore(); } else { R.stop(true); R.pick = 1; renderScore(); toast('Touche la première puis la dernière note du passage.'); } }
+  else if (a === 'loopPick') { R.stop(true); R.pick = 1; renderScore(); }
+  else if (a === 'loopClear') { R.loop = null; R.pick = 0; R.clear(); renderScore(); }
+  else if (a === 'click') { P.rhyClick = !P.rhyClick; b.setAttribute('aria-checked', P.rhyClick); Store.save('prefs'); }
+  else if (a === 'calib') R.calibrate();
+  return true;
+}
+
 function renderScoreStaff(){
   const w = $('#staffWrap'), s = Follow.score; if (!w || !s || !(ui.tab === 'morceaux' && ui.scoreId)) return;
   const sl = w.scrollLeft; w.innerHTML = staffSVG(s, Follow.res, Follow.done ? -1 : Follow.idx, Follow.rhythmMarks()); w.scrollLeft = sl;
@@ -2785,6 +3166,7 @@ function fwLive(dev, msg, bad){
 }
 function scoreClick(e){
   const so = e.target.closest('[data-sopen]'); if (so) { openScore(so.dataset.sopen); return true; }
+  if (ui.scoreId && !ui.scoreEdit && rhyClick(e)) return true;
   const src = e.target.closest('[data-ssrc]'); if (src) { P.scoreSrc = src.dataset.ssrc; Store.save('prefs'); renderSongs(); return true; }
   const sm = e.target.closest('[data-smode]'); if (sm && !sm.disabled) { P.scoreMode = sm.dataset.smode; Store.save('prefs'); renderScore(); return true; }
   const si = e.target.closest('[data-si]'); if (si && ui.scoreId && !ui.scoreEdit) { Follow.jump(+si.dataset.si); return true; }
@@ -2815,7 +3197,7 @@ function scoreClick(e){
   else if (a === 'delete' && s) {
     confirmBox(`Supprimer «${NB}${s.name || 'Sans titre'}${NB}» ?`, 'La partition sera effacée.', () => {
       SCORES = SCORES.filter(x => x.id !== s.id); SONG_DEL[s.id] = Date.now(); Store.save('songs');
-      Follow.stop(); ui.scoreId = null; ui.scoreEdit = false; renderNav(); renderSongs();
+      Follow.stop(); Rhy.stop(true); ui.scoreId = null; ui.scoreEdit = false; renderNav(); renderSongs();
     });
   }
   return true;
@@ -3227,6 +3609,7 @@ function showTab(t){
   if (t === 'guide') renderGuide();
   else if (Tuner.owner === 'page') Tuner.stop();
   if (t !== 'morceaux' && Follow.on) Follow.stop();
+  if (t !== 'morceaux' && (Rhy.on || Rhy.cal)) Rhy.stop(true);
   renderNav();
 }
 function go(t){ showTab(t); try { if (location.hash.slice(1) !== t) location.hash = t; } catch (e) {} }
@@ -3606,7 +3989,7 @@ function start(data){
   if (migrateSongs() | seedScores()) Store.save('songs');
   bind(); renderAll(); route();
   try { if (window.claude && window.claude.hot) window.claude.hot.snapshot(() => ({off:ui.off, set:ui.set, mode:ui.mode, tonic:ui.tonic, sBpm:ui.sBpm, ex:ui.ex, guide:ui.guide})); } catch (e) {}
-  if (/[?&]test\b/.test(location.search)) window.__duduk = {Follow, parseNoteText, parseMusicXML, unzipXML, get SCORES(){ return SCORES; }, P, Recs, Dam, Drill, Practice, Lead, ui, Tuner, DSP, Store, Backup, Metro, Scale, mergeSongs, mergePrefs, cleanPrefs, needWake, get wakeLock(){ return wakeLock; }, get SONG_DEL(){ return SONG_DEL; }, analyzeAudio, analyzeIntonation, summarizeIntonation, bakeLoop, importRecs, get SONGS(){ return SONGS; }, noteTXT, gridNotes, todayDone, dayKey};
+  if (/[?&]test\b/.test(location.search)) window.__duduk = {Follow, Rhy, AE, parseNoteText, parseMusicXML, unzipXML, get SCORES(){ return SCORES; }, P, Recs, Dam, Drill, Practice, Lead, ui, Tuner, DSP, Store, Backup, Metro, Scale, mergeSongs, mergePrefs, cleanPrefs, needWake, get wakeLock(){ return wakeLock; }, get SONG_DEL(){ return SONG_DEL; }, analyzeAudio, analyzeIntonation, summarizeIntonation, bakeLoop, importRecs, get SONGS(){ return SONGS; }, noteTXT, gridNotes, todayDone, dayKey};
   const ready = Store.init();
   if (ready && ready.then) ready.then(() => { if (Store.mode !== 'pending') maybeWelcome(); }); else maybeWelcome();
   Recs.ensure();
